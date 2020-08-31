@@ -24,14 +24,14 @@ namespace PasantiasWebApi.Controllers
             var lista_pasantias=_formularioARMservice.MostrarPasantias();
             return Ok(lista_pasantias);
         }
-/*
+
         [HttpGet]
-        [Route("MostrarPasantias")]
-        public ActionResult FiltrarPasantias(int id_)
+        [Route("FiltrarPasantias")]
+        public ActionResult FiltrarPasantias(int id_especialidad=0, int cantidad_años=0,float remuneracion=0)
         {
-            var lista_pasantias=_formularioARMservice.FiltrarPasantias();
+            var lista_pasantias=_formularioARMservice.FiltrarPasantias(id_especialidad,cantidad_años,remuneracion);
             return Ok(lista_pasantias);
         }
-        */
+        
     }
 }

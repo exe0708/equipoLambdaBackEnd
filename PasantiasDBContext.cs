@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PasantiasWebApi.Models;
+using System;
 namespace PasantiasWebApi
 {
     public class PasantiasDBContext : DbContext
@@ -20,6 +21,7 @@ namespace PasantiasWebApi
              new EspecialidadXARM.Mapeo(modeloCreador.Entity<EspecialidadXARM>());
              new EstadoARM.Mapeo(modeloCreador.Entity<EstadoARM>());
              new FormularioARM.Mapeo(modeloCreador.Entity<FormularioARM>());
+            modeloCreador.Entity<FormularioARM>().HasQueryFilter(x=>x.id_estado==0 && DateTime.Compare(x.fecha_baja,DateTime.Now)>1);
          }
 
     }
