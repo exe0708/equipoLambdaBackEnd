@@ -74,6 +74,19 @@ namespace PasantiasWebApi.Services
             
 
         }
+        public FormularioARM MostrarDatoPasantia(int id_formularioARM)
+        {
+            try
+            {
+                
+                var formularioARM= _pasantiasDbContext.FormularioARM.Where(x=>x.id_ARM==id_formularioARM).SingleOrDefault();
+                return formularioARM;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
+        }
 
     }
 }

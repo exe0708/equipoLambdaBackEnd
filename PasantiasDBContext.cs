@@ -13,7 +13,7 @@ namespace PasantiasWebApi
 
         public DbSet<EspecialidadXARM> EspecialidadXARM{ get; set; }
         public DbSet<EstadoARM> EstadoARM { get; set; }
-         public DbSet<Especialidad> FormularioARM { get; set; }
+         public DbSet<FormularioARM> FormularioARM { get; set; }
 
          protected override void OnModelCreating(ModelBuilder modeloCreador)
          {
