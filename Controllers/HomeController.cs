@@ -47,6 +47,20 @@ namespace PasantiasWebApi.Controllers
             var formularioARM=_formularioARMservice.MostrarDatoPasantia(id_formuarioARM);
             return Ok(formularioARM);
         }
-        
+        [HttpGet]
+        [Route("MostrarEspecialidad")]
+        public ActionResult MostrarEspecialidad()
+        {
+            var especialidad= _formularioARMservice.MostrarEspecialidad();
+            return Ok(especialidad);
+        }
+        [HttpGet]
+        [Route("MostrarCantidadAños")]
+        public ActionResult MostrarCantidadAños(int id_formuarioARM=0)
+        {
+            var cantidad_años= _formularioARMservice.MostrarCantidadAños();
+            return Ok(cantidad_años);
+        }
+
     }
 }

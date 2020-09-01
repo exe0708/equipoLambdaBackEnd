@@ -26,14 +26,24 @@ namespace PasantiasWebApi.Services
             return lista_pasantias;
         
         }
-        public List<especialidadxarm> FiltrarPasantias(int id_especialidad, int cantidad_años,float remuneracion)
+         public List<especialidad> MostrarEspecialidad()
+        {
+            var lista_especialidad=_pasantiasDbContext.especialidad.ToList();
+            return lista_especialidad;
+        }
+        public List<cantidadañospasante> MostrarCantidadAños()
+        {
+            var lista_especialidad=_pasantiasDbContext.cantidadañospasante.ToList();
+            return lista_especialidad;
+        }
+        public List<especialidadxarm> FiltrarPasantias(int id_especialidad=0, int cantidad_años=0,float remuneracion=0)
         {
             var lista_pasantias = new List<especialidadxarm>();
             lista_pasantias= _pasantiasDbContext.especialidadxarm
-            .Include(x=>x.id_especialidad)
             .Include(x=>x.formularioarm)
-            .Where(x=>x.formularioarm.id_estado==1 && DateTime.Compare(DateTime.Now,x.formularioarm.fechaBaja)<11)
-            .ToList();
+            .Include(x=>x.especialidad)
+            .Include(x=>x.formularioarm.sucursal)
+            .Where(x=>x.formularioarm.id_estado==1 && DateTime.Compare(DateTime.Now,x.formularioarm.fechaBaja)<1 ).ToList();
             
             int[]filtros= new int[3]{0,0,0};
             if(id_especialidad!=0)
@@ -44,7 +54,7 @@ namespace PasantiasWebApi.Services
             {
                 filtros[1]=2;
             }
-            if(cantidad_años!=0)
+            if(remuneracion!=0)
             {
                 filtros[2]=3;
             }
@@ -56,7 +66,6 @@ namespace PasantiasWebApi.Services
                     {
                         case 1:
                                 lista_pasantias.Where(x=>x.especialidad.id_especialidad==id_especialidad).ToList();
-                                
                                 break;
                         case 2:
                                 lista_pasantias.Where(x=>x.formularioarm.id_cantidadAños==cantidad_años).ToList();

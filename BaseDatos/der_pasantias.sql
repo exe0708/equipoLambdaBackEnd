@@ -2,253 +2,295 @@
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
 -- Schema mydb
 -- -----------------------------------------------------
 -- -----------------------------------------------------
--- Schema der_pasantias
+-- Schema pasantias
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema der_pasantias
+-- Schema pasantias
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `der_pasantias` DEFAULT CHARACTER SET utf8mb4 ;
-USE `der_pasantias` ;
+CREATE SCHEMA IF NOT EXISTS `pasantias` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `pasantias` ;
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`pais`
+-- Table `pasantias`.`pais`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`pais` (
-  `id_pais` INT(11) NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`pais` (
+  `id_pais` INT NOT NULL,
+  `estado` TINYINT(1) NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_pais`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 15
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`provincia`
+-- Table `pasantias`.`provincia`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`provincia` (
-  `id_provincia` INT(11) NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`provincia` (
+  `id_provincia` INT NOT NULL,
+  `estado` TINYINT NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `id_pais` INT(11) NULL DEFAULT NULL,
+  `id_pais` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_provincia`),
-  INDEX `id_pais` (`id_pais` ASC))
+  INDEX `id_pais_idx` (`id_pais` ASC) VISIBLE,
+  CONSTRAINT `id_pais`
+    FOREIGN KEY (`id_pais`)
+    REFERENCES `pasantias`.`pais` (`id_pais`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`localidad`
+-- Table `pasantias`.`localidad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`localidad` (
-  `id_localidad` INT(11) NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`localidad` (
+  `id_localidad` INT NOT NULL,
+  `estado` VARCHAR(45) NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `id_provincia` INT(11) NULL DEFAULT NULL,
+  `id_provincia` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_localidad`),
-  INDEX `id_provincia` (`id_provincia` ASC))
+  INDEX `id_provincia_idx` (`id_provincia` ASC) VISIBLE,
+  CONSTRAINT `id_provincia`
+    FOREIGN KEY (`id_provincia`)
+    REFERENCES `pasantias`.`provincia` (`id_provincia`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`barrio`
+-- Table `pasantias`.`barrio`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`barrio` (
-  `id_barrio` INT(11) NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`barrio` (
+  `id_barrio` INT NOT NULL,
+  `estado` TINYINT NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `id_localidad` INT(11) NULL DEFAULT NULL,
+  `id_localidad` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_barrio`),
-  INDEX `id_localidad` (`id_localidad` ASC))
+  INDEX `id_localidad_idx` (`id_localidad` ASC) VISIBLE,
+  CONSTRAINT `id_localidad`
+    FOREIGN KEY (`id_localidad`)
+    REFERENCES `pasantias`.`localidad` (`id_localidad`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`cantidad_años_pasante`
+-- Table `pasantias`.`cantidadañospasante`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`cantidad_años_pasante` (
-  `id_cantidad_añospasante` INT(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` VARCHAR(150) NULL DEFAULT NULL,
-  `nombre` VARCHAR(90) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`cantidadañospasante` (
+  `id_cantidad_añospasante` INT NOT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_cantidad_añospasante`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`tipo_empresa`
+-- Table `pasantias`.`tipoempresa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`tipo_empresa` (
-  `id_tipoEmpresa` INT(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` VARCHAR(200) NULL DEFAULT NULL,
-  `nombre` VARCHAR(90) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`tipoempresa` (
+  `id_tipoEmpresa` INT NOT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_tipoEmpresa`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`empresa`
+-- Table `pasantias`.`empresa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`empresa` (
-  `id_empresa` INT(11) NOT NULL AUTO_INCREMENT,
-  `cuit` VARCHAR(90) NULL DEFAULT NULL,
-  `guid` VARCHAR(90) NULL DEFAULT NULL,
-  `observaciones` VARCHAR(200) NULL DEFAULT NULL,
-  `razon_social` VARCHAR(100) NULL DEFAULT NULL,
-  `id_tipoEmpresa` INT(11) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`empresa` (
+  `id_empresa` INT NOT NULL,
+  `cuit` VARCHAR(45) NULL DEFAULT NULL,
+  `guid` VARCHAR(45) NULL DEFAULT NULL,
+  `observaciones` VARCHAR(45) NULL DEFAULT NULL,
+  `razon_social` VARCHAR(45) NULL DEFAULT NULL,
+  `id_tipoEmpresa` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_empresa`),
-  INDEX `id_tipoEmpresa` (`id_tipoEmpresa` ASC))
+  INDEX `id_tipoEmpresa_idx` (`id_tipoEmpresa` ASC) VISIBLE,
+  CONSTRAINT `id_tipoEmpresa`
+    FOREIGN KEY (`id_tipoEmpresa`)
+    REFERENCES `pasantias`.`tipoempresa` (`id_tipoEmpresa`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`especialidad`
+-- Table `pasantias`.`especialidad`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`especialidad` (
-  `id_especialidad` INT(11) NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
-  `nombre` VARCHAR(90) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`especialidad` (
+  `id_especialidad` INT NOT NULL,
+  `estado` TINYINT NULL DEFAULT NULL,
+  `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_especialidad`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`estado_arm`
+-- Table `pasantias`.`estadoarm`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`estado_arm` (
-  `id_estado` INT(11) NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`estadoarm` (
+  `id_estado` INT NOT NULL,
+  `estado` TINYINT NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_estado`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`genero`
+-- Table `pasantias`.`genero`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`genero` (
-  `id_genero` INT(11) NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`genero` (
+  `id_genero` INT NOT NULL,
+  `estado` TINYINT NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_genero`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
+COMMENT = '		';
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`estado_sucursal`
+-- Table `pasantias`.`estadosucursal`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`estado_sucursal` (
-  `id_estado` INT(11) NOT NULL AUTO_INCREMENT,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`estadosucursal` (
+  `id_estado_sucursal` INT NOT NULL,
+  `estado` TINYINT NULL DEFAULT NULL,
   `nombre` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_estado`))
+  PRIMARY KEY (`id_estado_sucursal`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`sucursal_x_empresa`
+-- Table `pasantias`.`sucursalesxempresa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`sucursal_x_empresa` (
-  `id_sucursal` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombre_sucursal` VARCHAR(80) NOT NULL,
-  `cantidad_empleados` INT(11) NULL DEFAULT NULL,
-  `email` VARCHAR(45) NOT NULL,
-  `fecha_registro` DATETIME NOT NULL,
-  `rubro` VARCHAR(45) NULL DEFAULT NULL,
-  `sitio_web` VARCHAR(60) NULL DEFAULT NULL,
-  `celular` INT(11) NULL DEFAULT NULL,
-  `telefono_fijo` INT(11) NULL DEFAULT NULL,
-  `calle` VARCHAR(45) NULL DEFAULT NULL,
-  `numero_calle` INT(11) NULL DEFAULT NULL,
-  `id_barrio` INT(11) NULL DEFAULT NULL,
-  `id_empresa` INT(11) NOT NULL,
-  `id_estado` INT(11) NULL DEFAULT NULL,
-  PRIMARY KEY (`id_sucursal`),
-  INDEX `id_barrio` (`id_barrio` ASC),
-  INDEX `id_empresa` (`id_empresa` ASC),
-  INDEX `id_estado` (`id_estado` ASC))
-ENGINE = InnoDB
-AUTO_INCREMENT = 13
-DEFAULT CHARACTER SET = utf8mb4;
-
-
--- -----------------------------------------------------
--- Table `der_pasantias`.`formulario_arm_xempresa`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`formulario_arm_xempresa` (
-  `id_arm` INT(11) NOT NULL AUTO_INCREMENT,
-  `cantidadPasantes` INT(11) NULL DEFAULT NULL,
-  `cargoACubrir` VARCHAR(90) NULL DEFAULT NULL,
-  `codigoArm` VARCHAR(150) NULL DEFAULT NULL,
-  `denegacionDebidoA` VARCHAR(200) NULL DEFAULT NULL,
-  `duracionMeses` INT(11) NULL DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`sucursalesxempresa` (
+  `id_sucursal` INT NOT NULL,
+  `nombre_sucursal` VARCHAR(45) NULL DEFAULT NULL,
+  `cantidad_empleados` VARCHAR(45) NULL DEFAULT NULL,
   `email` VARCHAR(45) NULL DEFAULT NULL,
-  `estudiante_docente` TINYINT(4) NULL DEFAULT NULL,
-  `experiencia` VARCHAR(800) NULL DEFAULT NULL,
-  `fechaAlta` DATE NULL DEFAULT NULL,
-  `fechaBaja` DATE NULL DEFAULT NULL,
-  `horaInicio` TIME NULL DEFAULT NULL,
-  `horaFin` TIME NULL DEFAULT NULL,
-  `lugarTrabajo` VARCHAR(150) NULL DEFAULT NULL,
-  `otrosConocimientos` VARCHAR(400) NULL DEFAULT NULL,
-  `otrosRequisitos` VARCHAR(400) NULL DEFAULT NULL,
-  `perfilSolicitado` VARCHAR(200) NULL DEFAULT NULL,
+  `fecha_registro` DATETIME NULL DEFAULT NULL,
+  `rubro` VARCHAR(45) NULL DEFAULT NULL,
+  `sitio_web` VARCHAR(45) NULL DEFAULT NULL,
+  `celular` INT NULL DEFAULT NULL,
+  `telefono_fijo` INT NULL DEFAULT NULL,
+  `calle` VARCHAR(45) NULL DEFAULT NULL,
+  `numero_calle` INT NULL DEFAULT NULL,
+  `id_barrio` INT NULL DEFAULT NULL,
+  `id_empresa` INT NULL DEFAULT NULL,
+  `id_estado_sucursal` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_sucursal`),
+  INDEX `id_empresa_idx` (`id_empresa` ASC) VISIBLE,
+  INDEX `id_barrio_idx` (`id_barrio` ASC) VISIBLE,
+  INDEX `id_estado_sucursal_idx` (`id_estado_sucursal` ASC) VISIBLE,
+  CONSTRAINT `id_barrio`
+    FOREIGN KEY (`id_barrio`)
+    REFERENCES `pasantias`.`barrio` (`id_barrio`),
+  CONSTRAINT `id_empresa`
+    FOREIGN KEY (`id_empresa`)
+    REFERENCES `pasantias`.`empresa` (`id_empresa`),
+  CONSTRAINT `id_estado_sucursal`
+    FOREIGN KEY (`id_estado_sucursal`)
+    REFERENCES `pasantias`.`estadosucursal` (`id_estado_sucursal`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `pasantias`.`formularioarm`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `pasantias`.`formularioarm` (
+  `id_arm` INT NOT NULL,
+  `cantidadPasantes` INT NULL DEFAULT NULL,
+  `cargoACubrir` VARCHAR(300) NULL DEFAULT NULL,
+  `codigoArm` VARCHAR(45) NULL DEFAULT NULL,
+  `denegacionDebidoA` VARCHAR(300) NULL DEFAULT NULL,
+  `duracionMeses` INT NULL DEFAULT NULL,
+  `email` VARCHAR(45) NULL DEFAULT NULL,
+  `estudiante_docente` TINYINT NULL DEFAULT NULL,
+  `experencia` VARCHAR(300) NULL DEFAULT NULL,
+  `fehcaAlta` DATETIME NULL DEFAULT NULL,
+  `fechaBaja` DATETIME NULL DEFAULT NULL,
+  `horaInicio` DATETIME NULL DEFAULT NULL,
+  `horaFin` DATETIME NULL DEFAULT NULL,
+  `lugarTrabajo` VARCHAR(300) NULL DEFAULT NULL,
+  `otrosConocimientos` VARCHAR(300) NULL DEFAULT NULL,
+  `otrosRequisitos` VARCHAR(300) NULL DEFAULT NULL,
+  `perfilSolicitado` VARCHAR(300) NULL DEFAULT NULL,
   `remuneracion` FLOAT NULL DEFAULT NULL,
-  `seOfrece` VARCHAR(800) NULL DEFAULT NULL,
-  `id_genero` INT(11) NULL DEFAULT NULL,
-  `id_cantidadAños` INT(11) NULL DEFAULT NULL,
-  `id_estado` INT(11) NULL DEFAULT NULL,
-  `id_sucursal` INT(11) NULL DEFAULT NULL,
+  `seOfrece` VARCHAR(300) NULL DEFAULT NULL,
+  `id_genero` INT NULL DEFAULT NULL,
+  `id_cantidadAños` INT NULL DEFAULT NULL,
+  `id_estado` INT NULL DEFAULT NULL,
+  `id_sucursal` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_arm`),
-  INDEX `id_estado` (`id_estado` ASC),
-  INDEX `id_genero` (`id_genero` ASC),
-  INDEX `id_sucursal` (`id_sucursal` ASC),
-  INDEX `id_cantidadAños` (`id_cantidadAños` ASC))
+  INDEX `id_genero_idx` (`id_genero` ASC) VISIBLE,
+  INDEX `id_cantidadAños_idx` (`id_cantidadAños` ASC) VISIBLE,
+  INDEX `id_estado_idx` (`id_estado` ASC) VISIBLE,
+  INDEX `id_sucursal_idx` (`id_sucursal` ASC) VISIBLE,
+  CONSTRAINT `id_cantidadAños`
+    FOREIGN KEY (`id_cantidadAños`)
+    REFERENCES `pasantias`.`cantidadañospasante` (`id_cantidad_añospasante`),
+  CONSTRAINT `id_estado`
+    FOREIGN KEY (`id_estado`)
+    REFERENCES `pasantias`.`estadoarm` (`id_estado`),
+  CONSTRAINT `id_genero`
+    FOREIGN KEY (`id_genero`)
+    REFERENCES `pasantias`.`genero` (`id_genero`),
+  CONSTRAINT `id_sucursal`
+    FOREIGN KEY (`id_sucursal`)
+    REFERENCES `pasantias`.`sucursalesxempresa` (`id_sucursal`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 9
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `der_pasantias`.`especialidad_x_arm`
+-- Table `pasantias`.`especialidadxarm`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `der_pasantias`.`especialidad_x_arm` (
-  `id_especialidadXArm` INT(11) NOT NULL,
-  `estado` TINYINT(4) NULL DEFAULT NULL,
-  `id_formularioArm` INT(11) NOT NULL,
-  `id_especialidad` INT(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `pasantias`.`especialidadxarm` (
+  `id_especialidadXArm` INT NOT NULL,
+  `estado` TINYINT NULL DEFAULT NULL,
+  `id_arm` INT NULL DEFAULT NULL,
+  `id_especialidad` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_especialidadXArm`),
-  INDEX `id_especialidad` (`id_especialidad` ASC),
-  INDEX `especialidad_x_arm_ibfk_1` (`id_formularioArm` ASC))
+  INDEX `id_formularioArm_idx` (`id_arm` ASC) VISIBLE,
+  INDEX `id_especialidad_idx` (`id_especialidad` ASC) VISIBLE,
+  CONSTRAINT `id_arm`
+    FOREIGN KEY (`id_arm`)
+    REFERENCES `pasantias`.`formularioarm` (`id_arm`),
+  CONSTRAINT `id_especialidad`
+    FOREIGN KEY (`id_especialidad`)
+    REFERENCES `pasantias`.`especialidad` (`id_especialidad`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
