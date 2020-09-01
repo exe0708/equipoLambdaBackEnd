@@ -31,10 +31,10 @@ namespace PasantiasWebApi.Services
             var lista_especialidad=_pasantiasDbContext.especialidad.ToList();
             return lista_especialidad;
         }
-        public List<cantidadañospasante> MostrarCantidadAños()
+        public List<cantidadaniospasante> MostrarCantidadAños()
         {
-            var lista_especialidad=_pasantiasDbContext.cantidadañospasante.ToList();
-            return lista_especialidad;
+            var lista_anios=_pasantiasDbContext.cantidadaniospasante.ToList();
+            return lista_anios;
         }
         public List<especialidadxarm> FiltrarPasantias(int id_especialidad=0, int cantidad_años=0,float remuneracion=0)
         {
@@ -65,13 +65,13 @@ namespace PasantiasWebApi.Services
                     switch(filtro)
                     {
                         case 1:
-                                lista_pasantias.Where(x=>x.especialidad.id_especialidad==id_especialidad).ToList();
+                                lista_pasantias=lista_pasantias.Where(x=>x.especialidad.id_especialidad==id_especialidad).ToList();
                                 break;
                         case 2:
-                                lista_pasantias.Where(x=>x.formularioarm.id_cantidadAños==cantidad_años).ToList();
+                                lista_pasantias=lista_pasantias.Where(x=>x.formularioarm.id_cantidadAnios==cantidad_años).ToList();
                                 break;
                         case 3:
-                                lista_pasantias.Where(x=>x.formularioarm.remuneracion>=remuneracion).ToList();
+                                lista_pasantias=lista_pasantias.Where(x=>x.formularioarm.remuneracion>=remuneracion).ToList();
                                 break;
 
                     }    

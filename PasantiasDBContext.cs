@@ -10,7 +10,7 @@ namespace PasantiasWebApi
         {
         }
         public DbSet<barrio> barrio { get; set; }
-        public DbSet<cantidadañospasante> cantidadañospasante { get; set; }
+        public DbSet<cantidadaniospasante> cantidadaniospasante { get; set; }
         public DbSet<empresa> empresa { get; set; }
         public DbSet<especialidad> especialidad { get; set; }
         public DbSet<especialidadxarm> especialidadxarm{ get; set; }
@@ -28,7 +28,7 @@ namespace PasantiasWebApi
          {
           
              new barrio.Mapeo(modeloCreador.Entity<barrio>());
-             new cantidadañospasante.Mapeo(modeloCreador.Entity<cantidadañospasante>());
+             new cantidadaniospasante.Mapeo(modeloCreador.Entity<cantidadaniospasante>());
              new empresa.Mapeo(modeloCreador.Entity<empresa>());
              new especialidad.Mapeo(modeloCreador.Entity<especialidad>());
              new especialidadxarm.Mapeo(modeloCreador.Entity<especialidadxarm>());

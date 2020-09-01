@@ -35,9 +35,9 @@ namespace PasantiasWebApi.Models
         [ForeignKey("id_genero")]
         public genero genero { get; set; }
         
-        [ForeignKey("id_cantidadAños")]  
-        public cantidadañospasante cantidadañospasante { get; set; }
-        public int id_cantidadAños { get; set; }  
+        [ForeignKey("id_cantidadAnios")]  
+        public cantidadaniospasante cantidadaniospasante { get; set; }
+        public int id_cantidadAnios { get; set; }  
         [ForeignKey("id_estado")]  
         public estadoarm estadoarm { get; set; }
         public int id_estado { get; set; } 
@@ -53,9 +53,9 @@ namespace PasantiasWebApi.Models
                 mapeoFormularioARM.Property(x=>x.id_genero).HasColumnName("id_genero");
                 mapeoFormularioARM.Property(x=>x.id_estado).HasColumnName("id_estado");
                 mapeoFormularioARM.Property(x=>x.id_sucursal).HasColumnName("id_sucursal");
-                mapeoFormularioARM.Property(x=>x.id_cantidadAños).HasColumnName("id_cantidadAños");
+                mapeoFormularioARM.Property(x=>x.id_cantidadAnios).HasColumnName("id_cantidadAnios");
                 mapeoFormularioARM.HasOne(x=> x.genero);
-                mapeoFormularioARM.HasOne(x=> x.cantidadañospasante);
+                mapeoFormularioARM.HasOne(x=> x.cantidadaniospasante);
                 mapeoFormularioARM.HasOne(x=> x.estadoarm);
                 mapeoFormularioARM.HasOne(x=>x.sucursal);
                 

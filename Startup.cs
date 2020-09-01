@@ -11,6 +11,7 @@ namespace PasantiasWebApi
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +26,9 @@ namespace PasantiasWebApi
              services.AddDbContext <PasantiasDBContext> (opciones =>
             opciones.UseMySQL(Configuration.GetConnectionString ("pasantiasProduccion")));
             services.AddTransient<FormularioARMService,FormularioARMService>();
+            services.AddCors(options =>
+             {options.AddPolicy(name: MyAllowSpecificOrigins,builder =>
+                              {builder.WithOrigins("http://localhost:4200/");}); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +44,10 @@ namespace PasantiasWebApi
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+            });
 
             app.UseEndpoints(endpoints =>
             {

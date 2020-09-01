@@ -33,7 +33,7 @@ namespace PasantiasWebApi.Controllers
         }
 
         [HttpGet]
-        [Route("FiltrarPasantias")]
+        [Route("FiltrarPasantias/{id_especialidad}/{cantidad_años}/{remuneracion}")]
         public ActionResult FiltrarPasantias(int id_especialidad=0, int cantidad_años=0,float remuneracion=0)
         {
             var lista_pasantias=_formularioARMservice.FiltrarPasantias(id_especialidad,cantidad_años,remuneracion);
@@ -41,7 +41,7 @@ namespace PasantiasWebApi.Controllers
         }
 
         [HttpGet]
-        [Route("MostrarDatoPasantia")]
+        [Route("MostrarDatoPasantia/{id_formuarioARM}")]
         public ActionResult MostrarDatoPasantia(int id_formuarioARM=0)
         {
             var formularioARM=_formularioARMservice.MostrarDatoPasantia(id_formuarioARM);
