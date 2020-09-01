@@ -59,3 +59,15 @@ C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\obj\Debug\netcoreapp3
 C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\obj\Debug\netcoreapp3.1\PasantiasWebApi.dll
 C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\obj\Debug\netcoreapp3.1\PasantiasWebApi.pdb
 C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\obj\Debug\netcoreapp3.1\PasantiasWebApi.genruntimeconfig.cache
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\MySql.Data.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\MySql.Data.EntityFrameworkCore.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
+C:\Users\USUARIO\Desktop\ProyectoPasantias\PasantiasWebApi\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll

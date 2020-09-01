@@ -9,11 +9,11 @@ using PasantiasWebApi.Services;
 namespace PasantiasWebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class HomeControler : ControllerBase
+    [Route("api/[controller]")]
+    public class HomeController : ControllerBase
     {
         private readonly FormularioARMService _formularioARMservice;
-        public HomeControler(FormularioARMService formularioARMservice)
+        public HomeController(FormularioARMService formularioARMservice)
         {
             _formularioARMservice=formularioARMservice;
         }
@@ -21,8 +21,15 @@ namespace PasantiasWebApi.Controllers
         [Route("MostrarPasantias")]
         public ActionResult MostrarPasantias()
         {
-            var lista_pasantias=_formularioARMservice.MostrarPasantias();
-            return Ok(lista_pasantias);
+            try
+            {
+                var lista_pasantias=_formularioARMservice.MostrarPasantias();
+                return Ok(lista_pasantias);
+            }
+            catch(Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
 
         [HttpGet]

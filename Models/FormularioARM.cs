@@ -1,68 +1,63 @@
 
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using PasantiasWebApi.Models;
 namespace PasantiasWebApi.Models
 {
-    public class FormularioARM
-    {
-        public int id_ARM { get; set; }
-        public int cantidad_pasantes { get; set; }
-        public string cargo_aCubrir { get; set; }
-        public string codigoARM { get; set; }
-        public string denegacion_debidoA { get; set; }
-        public int duracion_meses { get; set; }
-        public string mail { get; set; }
+    public class formularioarm
+    {   
+        
+        public int id_arm { get; set; }
+        public int cantidadPasantes { get; set; }
+        public string cargoACubrir { get; set; }
+        public string codigoArm { get; set; }
+        public string denegacionDebidoA { get; set; }
+        public int duracionMeses { get; set; }
+        public string email { get; set; }
         public bool estudiante_docente { get; set; }
         public string experencia { get; set; }
-        public DateTime fehca_alta { get; set; }
-        public DateTime fecha_baja { get; set; }
-        public DateTime hora_inicio { get; set; }
-        public DateTime hora_fin { get; set; }
-        public DateTime horario_inicioEntrevista { get; set; }
-        public DateTime horario_finalEntrevista { get; set; }
-        public string lugar_trabajo { get; set; }
-        public string otros_conocimientos { get; set; }
-        public string otros_requisitos { get; set; }
-        public string perfil_solicitado { get; set; }
+        public DateTime fehcaAlta { get; set; }
+        public DateTime fechaBaja { get; set; }
+        public DateTime horaInicio { get; set; }
+        public DateTime horaFin { get; set; }
+        //public DateTime horario_inicioEntrevista { get; set; }
+        //public DateTime horario_finalEntrevista { get; set; }
+        public string lugarTrabajo { get; set; }
+        public string otrosConocimientos { get; set; }
+        public string otrosRequisitos { get; set; }
+        public string perfilSolicitado { get; set; }
         public float remuneracion { get; set; }
-        public string seofrece { get; set; }
-        public bool sexo { get; set; }
-        public int id_cantidadAños { get; set; }    
-        public CantidadAñosPasante CantidadAños { get; set; }
-        public int id_estado { get; set; }    
-        public EstadoARM Estado { get; set; }
+        public string seOfrece { get; set; }
+        public int id_genero { get; set; }
+        [ForeignKey("id_genero")]
+        public genero genero { get; set; }
         
+        [ForeignKey("id_cantidadAños")]  
+        public cantidadañospasante cantidadañospasante { get; set; }
+        public int id_cantidadAños { get; set; }  
+        [ForeignKey("id_estado")]  
+        public estadoarm estadoarm { get; set; }
+        public int id_estado { get; set; } 
+        [ForeignKey("id_sucursal")]
+        public sucursalesxempresa sucursal { get; set; }
+        public int id_sucursal { get; set; }
+       
           public class Mapeo
         {
-             public Mapeo(EntityTypeBuilder<FormularioARM> mapeoFormularioARM)
+             public Mapeo(EntityTypeBuilder<formularioarm> mapeoFormularioARM)
             {
-                mapeoFormularioARM.HasKey(x=>x.id_ARM);
-                mapeoFormularioARM.Property(x=> x.cantidad_pasantes);
-                mapeoFormularioARM.Property(x=> x.cargo_aCubrir);
-                mapeoFormularioARM.Property(x=> x.codigoARM);
-                mapeoFormularioARM.Property(x=> x.denegacion_debidoA);
-                mapeoFormularioARM.Property(x=> x.duracion_meses);
-                mapeoFormularioARM.Property(x=> x.mail);
-                mapeoFormularioARM.Property(x=> x.estudiante_docente);
-                mapeoFormularioARM.Property(x=> x.experencia);
-                mapeoFormularioARM.Property(x=> x.fecha_baja);
-                mapeoFormularioARM.Property(x=> x.fehca_alta);
-                mapeoFormularioARM.Property(x=> x.hora_inicio);
-                mapeoFormularioARM.Property(x=> x.hora_fin);
-                mapeoFormularioARM.Property(x=> x.horario_inicioEntrevista);
-                mapeoFormularioARM.Property(x=> x.horario_finalEntrevista);
-                mapeoFormularioARM.Property(x=> x.lugar_trabajo);
-                mapeoFormularioARM.Property(x=> x.otros_conocimientos);
-                mapeoFormularioARM.Property(x=> x.otros_requisitos);
-                mapeoFormularioARM.Property(x=> x.perfil_solicitado);
-                mapeoFormularioARM.Property(x=> x.remuneracion);
-                mapeoFormularioARM.Property(x=> x.seofrece);
-                mapeoFormularioARM.Property(x=> x.sexo);
-                mapeoFormularioARM.HasOne(x=> x.CantidadAños);
-                mapeoFormularioARM.HasOne(x=> x.Estado);
-                mapeoFormularioARM.ToTable("FormularioARM");
+                mapeoFormularioARM.HasKey(x=>x.id_arm);
+                mapeoFormularioARM.Property(x=>x.id_genero).HasColumnName("id_genero");
+                mapeoFormularioARM.Property(x=>x.id_estado).HasColumnName("id_estado");
+                mapeoFormularioARM.Property(x=>x.id_sucursal).HasColumnName("id_sucursal");
+                mapeoFormularioARM.Property(x=>x.id_cantidadAños).HasColumnName("id_cantidadAños");
+                mapeoFormularioARM.HasOne(x=> x.genero);
+                mapeoFormularioARM.HasOne(x=> x.cantidadañospasante);
+                mapeoFormularioARM.HasOne(x=> x.estadoarm);
+                mapeoFormularioARM.HasOne(x=>x.sucursal);
                 
             }
         }    

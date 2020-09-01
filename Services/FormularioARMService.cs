@@ -14,25 +14,27 @@ namespace PasantiasWebApi.Services
                 _pasantiasDbContext=pasantiasDBContext;
         }
 
-        public List<EspecialidadXARM> MostrarPasantias()
+        public List<especialidadxarm> MostrarPasantias()
         {
-            var lista_pasantias = new List<EspecialidadXARM>();
-            try
-            {
-                lista_pasantias= _pasantiasDbContext.EspecialidadXARM.Include(x=>x.Especialidad).Include(x=>x.Formulario).ToList();
-                return lista_pasantias;
-            }
-            catch (System.Exception)
-            {
-                return lista_pasantias;
-                throw;
-            }
-            
+            var lista_pasantias = new List<especialidadxarm>();
+         
+            lista_pasantias= _pasantiasDbContext.especialidadxarm
+            .Include(x=>x.formularioarm)
+            .Include(x=>x.especialidad)
+            .Include(x=>x.formularioarm.sucursal)
+            .Where(x=>x.formularioarm.id_estado==1 && DateTime.Compare(DateTime.Now,x.formularioarm.fechaBaja)<1 ).ToList();
+            return lista_pasantias;
+        
         }
-        public List<EspecialidadXARM> FiltrarPasantias(int id_especialidad, int cantidad_años,float remuneracion)
+        public List<especialidadxarm> FiltrarPasantias(int id_especialidad, int cantidad_años,float remuneracion)
         {
-            var lista_pasantias = new List<EspecialidadXARM>();
-            lista_pasantias= _pasantiasDbContext.EspecialidadXARM.Include(x=>x.Especialidad).Include(x=>x.Formulario).ToList();
+            var lista_pasantias = new List<especialidadxarm>();
+            lista_pasantias= _pasantiasDbContext.especialidadxarm
+            .Include(x=>x.id_especialidad)
+            .Include(x=>x.formularioarm)
+            .Where(x=>x.formularioarm.id_estado==1 && DateTime.Compare(DateTime.Now,x.formularioarm.fechaBaja)<11)
+            .ToList();
+            
             int[]filtros= new int[3]{0,0,0};
             if(id_especialidad!=0)
             {
@@ -53,13 +55,14 @@ namespace PasantiasWebApi.Services
                     switch(filtro)
                     {
                         case 1:
-                                lista_pasantias.Where(x=>x.id_especialidad==id_especialidad);
+                                lista_pasantias.Where(x=>x.especialidad.id_especialidad==id_especialidad).ToList();
+                                
                                 break;
                         case 2:
-                                lista_pasantias.Where(x=>x.Formulario.id_cantidadAños==cantidad_años);
+                                lista_pasantias.Where(x=>x.formularioarm.id_cantidadAños==cantidad_años).ToList();
                                 break;
                         case 3:
-                                lista_pasantias.Where(x=>x.Formulario.remuneracion>=remuneracion);
+                                lista_pasantias.Where(x=>x.formularioarm.remuneracion>=remuneracion).ToList();
                                 break;
 
                     }    
@@ -74,12 +77,12 @@ namespace PasantiasWebApi.Services
             
 
         }
-        public FormularioARM MostrarDatoPasantia(int id_formularioARM)
+        public formularioarm MostrarDatoPasantia(int id_formularioARM)
         {
             try
             {
                 
-                var formularioARM= _pasantiasDbContext.FormularioARM.Where(x=>x.id_ARM==id_formularioARM).SingleOrDefault();
+                var formularioARM= _pasantiasDbContext.formularioarm.Where(x=>x.id_arm ==id_formularioARM).SingleOrDefault();
                 return formularioARM;
             }
             catch(Exception e)

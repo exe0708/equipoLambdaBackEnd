@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using PasantiasWebApi.Services;
+
+
 namespace PasantiasWebApi
 {
     public class Startup
@@ -20,8 +22,8 @@ namespace PasantiasWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<PasantiasDBContext>(opt =>
-               opt.UseSqlServer(Configuration.GetConnectionString("pasantiasProduccion")));
+             services.AddDbContext <PasantiasDBContext> (opciones =>
+            opciones.UseMySQL(Configuration.GetConnectionString ("pasantiasProduccion")));
             services.AddTransient<FormularioARMService,FormularioARMService>();
         }
 

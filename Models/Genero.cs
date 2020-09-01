@@ -4,19 +4,19 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace PasantiasWebApi.Models
 {
-    public class cantidadañospasante
+    public class genero
     {
         
-        public int id_cantidad_añospasante { get; set; }
-        public string descripcion { get; set; }
+        public int id_genero { get; set; }
+        public bool estado { get; set; }
         public string nombre { get; set; }
         
         public class Mapeo
         {
-             public Mapeo(EntityTypeBuilder<cantidadañospasante> mapeoCantidadAños)
+             public Mapeo(EntityTypeBuilder<genero> mapeoGenero)
             {
-                mapeoCantidadAños.HasKey(x=>x.id_cantidad_añospasante);
-              
+                mapeoGenero.HasKey(x=>x.id_genero);
+                
             }
         }
     }

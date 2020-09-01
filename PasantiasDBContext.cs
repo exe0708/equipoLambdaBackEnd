@@ -1,27 +1,48 @@
 using Microsoft.EntityFrameworkCore;
 using PasantiasWebApi.Models;
 using System;
+using System.Linq;
 namespace PasantiasWebApi
 {
     public class PasantiasDBContext : DbContext
     {
-        public PasantiasDBContext(DbContextOptions<PasantiasDBContext> options): base(options)
+        public PasantiasDBContext(DbContextOptions options): base(options)
         {
         }
-
-        public DbSet<Especialidad> Especialidad { get; set; }
-
-        public DbSet<EspecialidadXARM> EspecialidadXARM{ get; set; }
-        public DbSet<EstadoARM> EstadoARM { get; set; }
-         public DbSet<FormularioARM> FormularioARM { get; set; }
-
+        public DbSet<barrio> barrio { get; set; }
+        public DbSet<cantidadañospasante> cantidadañospasante { get; set; }
+        public DbSet<empresa> empresa { get; set; }
+        public DbSet<especialidad> especialidad { get; set; }
+        public DbSet<especialidadxarm> especialidadxarm{ get; set; }
+        public DbSet<estadoarm> estadoarm { get; set; }
+        public DbSet<estadosucursal> estadosucursal { get; set; }
+        public DbSet<formularioarm> formularioarm { get; set; }
+        public DbSet<genero> genero { get; set; }
+        public DbSet<localidad> localidad { get; set; }
+        public DbSet<pais> pais { get; set; }
+        public DbSet<provincia> provincia { get; set; }
+        public DbSet<sucursalesxempresa> sucursalesxempresa { get; set; }
+        public DbSet<tipoempresa> tipoempresa { get; set; }
+        
          protected override void OnModelCreating(ModelBuilder modeloCreador)
          {
-             new Especialidad.Mapeo(modeloCreador.Entity<Especialidad>());
-             new EspecialidadXARM.Mapeo(modeloCreador.Entity<EspecialidadXARM>());
-             new EstadoARM.Mapeo(modeloCreador.Entity<EstadoARM>());
-             new FormularioARM.Mapeo(modeloCreador.Entity<FormularioARM>());
-            modeloCreador.Entity<FormularioARM>().HasQueryFilter(x=>x.id_estado==0 && DateTime.Compare(x.fecha_baja,DateTime.Now)>1);
+          
+             new barrio.Mapeo(modeloCreador.Entity<barrio>());
+             new cantidadañospasante.Mapeo(modeloCreador.Entity<cantidadañospasante>());
+             new empresa.Mapeo(modeloCreador.Entity<empresa>());
+             new especialidad.Mapeo(modeloCreador.Entity<especialidad>());
+             new especialidadxarm.Mapeo(modeloCreador.Entity<especialidadxarm>());
+             new estadoarm.Mapeo(modeloCreador.Entity<estadoarm>());
+             new estadosucursal.Mapeo(modeloCreador.Entity<estadosucursal>());
+             new formularioarm.Mapeo(modeloCreador.Entity<formularioarm>());
+             new genero.Mapeo(modeloCreador.Entity<genero>());
+             new localidad.Mapeo(modeloCreador.Entity<localidad>());
+             new pais.Mapeo(modeloCreador.Entity<pais>());
+             new provincia.Mapeo(modeloCreador.Entity<provincia>());
+             new sucursalesxempresa.Mapeo(modeloCreador.Entity<sucursalesxempresa>());
+             new tipoempresa.Mapeo(modeloCreador.Entity<tipoempresa>());   
+            //modeloCreador.Entity<especialidadxarm>().HasQueryFilter(x=>x.formularioarm.id_estado==1 && DateTime.Compare(x.formularioarm.fechaBaja,DateTime.Now)<1);
+            
          }
 
     }
