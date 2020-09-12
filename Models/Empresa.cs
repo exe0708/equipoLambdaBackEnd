@@ -8,6 +8,7 @@ namespace PasantiasWebApi.Models
     public class empresa
     {
         
+        
         public int id_empresa { get; set; }
         public string cuit { get; set; }
         public string guid { get; set; }
@@ -19,8 +20,8 @@ namespace PasantiasWebApi.Models
         public tipoempresa tipoempresa { get; set; }
         
         public class Mapeo
-        {
-             public Mapeo(EntityTypeBuilder<empresa> mapeoEmpresa)
+        {   
+            public Mapeo(EntityTypeBuilder<empresa> mapeoEmpresa)
             {
                 mapeoEmpresa.HasKey(x=>x.id_empresa);
                 mapeoEmpresa.Property(x=>x.id_tipoEmpresa).HasColumnName("id_tipoEmpresa");
