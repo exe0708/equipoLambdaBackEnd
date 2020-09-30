@@ -43,6 +43,8 @@ namespace PasantiasWebApi.Services
             .Include(x=>x.formularioarm)
             .Include(x=>x.especialidad)
             .Include(x=>x.formularioarm.sucursal)
+            .Include(x=>x.formularioarm.sucursal.empresa)
+            .Include(x=>x.formularioarm.cantidadaniospasante)
             .Where(x=>x.formularioarm.id_estado==1 && DateTime.Compare(DateTime.Now,x.formularioarm.fechaBaja)<1 ).ToList();
             
             int[]filtros= new int[3]{0,0,0};
@@ -86,18 +88,14 @@ namespace PasantiasWebApi.Services
             
 
         }
+
         public formularioarm MostrarDatoPasantia(int id_formularioARM)
         {
-            try
-            {
                 
-                var formularioARM= _pasantiasDbContext.formularioarm.Where(x=>x.id_arm ==id_formularioARM).SingleOrDefault();
+                var formularioARM= _pasantiasDbContext.formularioarm.Where(x=>x.id_arm ==id_formularioARM)
+                .Include(x=>x.cantidadaniospasante).SingleOrDefault();
                 return formularioARM;
-            }
-            catch(Exception e)
-            {
-                return null;
-            }
+
         }
 
     }

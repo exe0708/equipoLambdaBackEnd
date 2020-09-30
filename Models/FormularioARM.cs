@@ -18,7 +18,7 @@ namespace PasantiasWebApi.Models
         public int duracionMeses { get; set; }
         public string email { get; set; }
         public bool estudiante_docente { get; set; }
-        public string experencia { get; set; }
+        public string experiencia { get; set; }
         public DateTime fehcaAlta { get; set; }
         public DateTime fechaBaja { get; set; }
         public DateTime horaInicio { get; set; }
