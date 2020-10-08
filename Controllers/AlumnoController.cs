@@ -10,8 +10,9 @@ namespace PasantiasWebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AlumnoController : ControllerBase
-    {
-        public int MyProperty { get; set; }
-    }
+        private readonly AlumnoService _Alumnoservice;
+        public AlumnoController(FormularioARMService formularioARMservice)
+        {
+            _formularioARMservice=formularioARMservice;
+        }
 }

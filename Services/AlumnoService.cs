@@ -8,6 +8,10 @@ namespace PasantiasWebApi.Services
         {
                 _pasantiasDbContext=pasantiasDBContext;
         }
+        //get alumno(legajo)
+        // Update de alumno
+        //public registrar_entrevista List<>(id_empresa, legajo,id_formulario )
+        
 
 
 
