@@ -26,6 +26,7 @@ namespace PasantiasWebApi
              services.AddDbContext <PasantiasDBContext> (opciones =>
             opciones.UseMySQL(Configuration.GetConnectionString ("pasantiasProduccion")));
             services.AddTransient<FormularioARMService,FormularioARMService>();
+            services.AddTransient<ResponsableService,ResponsableService>();
             services.AddCors(options =>
              {options.AddPolicy(name: MyAllowSpecificOrigins,builder =>
                               {builder.WithOrigins("http://localhost:4200/");}); });
