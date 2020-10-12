@@ -8021,24 +8021,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\USUARIO\\.nuget\\packages\\": {}
+    "C:\\Users\\melip\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
       "projectName": "PasantiasWebApi",
       "projectPath": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
       "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\melip\\Desktop\\backend-pasantias\\equipoLambdaBackEnd\\PasantiasWebApi.csproj",
+      "projectName": "PasantiasWebApi",
+      "projectPath": "C:\\Users\\melip\\Desktop\\backend-pasantias\\equipoLambdaBackEnd\\PasantiasWebApi.csproj",
+      "packagesPath": "C:\\Users\\melip\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\melip\\Desktop\\backend-pasantias\\equipoLambdaBackEnd\\obj\\",
+>>>>>>> procesar_pasantia
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\melip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
