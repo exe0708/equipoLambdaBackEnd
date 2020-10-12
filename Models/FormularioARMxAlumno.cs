@@ -9,9 +9,9 @@ namespace PasantiasWebApi.Models
 {
     public class formularioarmxalumno
     {           
-        public int id_formularioarmxalumno { get; set; }
-        public int id_formularioarm {get;set;}
-        [ForeignKey("id_formularioARM")]
+        public int id_formularioArmXalumno { get; set; }
+        public int id_formularioArm {get;set;}
+        [ForeignKey("id_formularioArm")]
         public formularioarm formularioarm {get;set;}
         public int legajo_alumno { get; set; }
         [ForeignKey("legajo_alumno")]
@@ -30,8 +30,8 @@ namespace PasantiasWebApi.Models
         {
              public Mapeo(EntityTypeBuilder<formularioarmxalumno> mapeoFormularioARMxAlumno)
             {
-                mapeoFormularioARMxAlumno.HasKey(x=>x.id_formularioarmxalumno);
-                mapeoFormularioARMxAlumno.Property(x=>x.id_formularioarm).HasColumnName("id_formularioArm");
+                mapeoFormularioARMxAlumno.HasKey(x=>x.id_formularioArmXalumno);
+                mapeoFormularioARMxAlumno.Property(x=>x.id_formularioArm).HasColumnName("id_formularioArm");
                 mapeoFormularioARMxAlumno.Property(x=>x.legajo_alumno).HasColumnName("legajo_alumno");
                 mapeoFormularioARMxAlumno.Property(x=>x.legajo_responsable).HasColumnName("legajo_responsable");
                 mapeoFormularioARMxAlumno.Property(x=>x.id_estado).HasColumnName("id_estado");

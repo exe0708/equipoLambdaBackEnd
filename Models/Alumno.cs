@@ -27,7 +27,7 @@ namespace PasantiasWebApi.Models
                 mapeoAlumno.Property(x=>x.id_especialidad).HasColumnName("id_especialidad");
                 mapeoAlumno.Property(x=>x.tipo_telefono).HasColumnName("tipo_telefono");
                 mapeoAlumno.HasOne(x=>x.especialidad);
-                mapeoAlumno.HasOne(x=>x.tipo_telefono);
+                mapeoAlumno.HasOne(x=>x.tipotelefono);
                 
             }
         }

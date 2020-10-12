@@ -38,7 +38,7 @@ namespace PasantiasWebApi
              new especialidad.Mapeo(modeloCreador.Entity<especialidad>());
              new especialidadxarm.Mapeo(modeloCreador.Entity<especialidadxarm>());
              new estadoarm.Mapeo(modeloCreador.Entity<estadoarm>());
-             new estadoarmxalumno.Mapeo(modeloCreador..Entity<estadoarmxalumno>());
+             new estadoarmxalumno.Mapeo(modeloCreador.Entity<estadoarmxalumno>());
              new estadosucursal.Mapeo(modeloCreador.Entity<estadosucursal>());
              new formularioarm.Mapeo(modeloCreador.Entity<formularioarm>());
              new formularioarmxalumno.Mapeo(modeloCreador.Entity<formularioarmxalumno>());
