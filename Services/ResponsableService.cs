@@ -14,7 +14,6 @@ namespace PasantiasWebApi.Services
                 _pasantiasDbContext=pasantiasDBContext;
         }
 
-<<<<<<< HEAD
         public List<formularioarmxalumno> MostrarSolicitudes()
         {
             var lista_solicitudes = new List<formularioarmxalumno>();
@@ -66,14 +65,6 @@ namespace PasantiasWebApi.Services
 
 
        
-=======
-    public bool confimar_pedido()
-    {
-
-        return true;
-    }
-    
->>>>>>> desarrollo
 
     }
 }

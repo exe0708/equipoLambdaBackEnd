@@ -5,10 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PasantiasWebApi.Services;
-<<<<<<< HEAD
 using PasantiasWebApi.Models;
-=======
->>>>>>> desarrollo
 
 namespace PasantiasWebApi.Controllers
 {
@@ -20,7 +17,6 @@ namespace PasantiasWebApi.Controllers
         public ResponsableController(ResponsableService responsableService)
         {
             _responsableService=responsableService;
-<<<<<<< HEAD
         }
         [HttpGet]
         [Route("MostrarSolicitudes")]
@@ -30,31 +26,12 @@ namespace PasantiasWebApi.Controllers
             {
                 var lista_solicitudes=_responsableService.MostrarSolicitudes();
                 return Ok(lista_solicitudes);
-=======
-           
-        }
-        [HttpPost]
-        [Route("ConfirmarPedido")]
-        public ActionResult ConfirmarPedido()
-        {
-            try
-            {
-               if(_responsableService.confimar_pedido())
-               {
-               return Ok(true);
-               }
-               else
-               {
-                   return Ok(false);
-               }
->>>>>>> desarrollo
             }
             catch(Exception e)
             {
                 return Ok(e.Message);
             }
         }
-<<<<<<< HEAD
 
         [HttpPut]
         [Route("AceptarSolicitud/{id_solicitud}")]
@@ -89,7 +66,5 @@ namespace PasantiasWebApi.Controllers
 
 
 
-=======
->>>>>>> desarrollo
     }
 }
