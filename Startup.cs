@@ -24,11 +24,11 @@ namespace PasantiasWebApi
         {
             services.AddControllers();
              services.AddDbContext <PasantiasDBContext> (opciones =>
-            opciones.UseMySQL(Configuration.GetConnectionString ("pasantiasProduccion")));
+            opciones.UseMySQL(Configuration.GetConnectionString ("pasantiasDesarrollo")));
             services.AddTransient<FormularioARMService,FormularioARMService>();
-            services.AddCors(options =>
-             {options.AddPolicy(name: MyAllowSpecificOrigins,builder =>
-                              {builder.WithOrigins("http://localhost:4200/");}); });
+            services.AddTransient<ResponsableService,ResponsableService>();
+            services.AddTransient<AlumnoService,AlumnoService>();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +46,7 @@ namespace PasantiasWebApi
             app.UseAuthorization();
             app.UseCors(builder =>
             {
-                builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
             });
 
             app.UseEndpoints(endpoints =>
