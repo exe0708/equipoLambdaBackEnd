@@ -1,4 +1,9 @@
 
+using System;
+using System.Collections.Generic;
+using PasantiasWebApi.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 namespace PasantiasWebApi.Services
 {
     public class AlumnoService
@@ -7,6 +12,41 @@ namespace PasantiasWebApi.Services
         public AlumnoService(PasantiasDBContext pasantiasDBContext)
         {
                 _pasantiasDbContext=pasantiasDBContext;
+        }
+        public alumno obtenerAlumno(int legajo)
+        {
+            var alumno = _pasantiasDbContext.alumno.Where(x=> x.legajo== legajo).SingleOrDefault();
+            return alumno;
+        }
+        public bool actualizarAlumno(alumno alumno)
+        {
+            bool respuesta =false;
+            try 
+            {
+                _pasantiasDbContext.alumno.Update(alumno);
+                respuesta = true;
+            }
+            catch(System.Exception)
+            {
+                throw;
+            }
+            return respuesta;
+        }
+
+        public bool postularAlumno(formularioarmxalumno modelo)
+        {
+            try
+            {
+                _pasantiasDbContext.formularioarmxalumno.Add(modelo);
+                _pasantiasDbContext.SaveChanges();
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+            
+            return true;
         }
 
 
