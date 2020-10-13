@@ -26,9 +26,16 @@ namespace PasantiasWebApi
              services.AddDbContext <PasantiasDBContext> (opciones =>
             opciones.UseMySQL(Configuration.GetConnectionString ("pasantiasProduccion")));
             services.AddTransient<FormularioARMService,FormularioARMService>();
+<<<<<<< HEAD
             services.AddTransient<AlumnoService,AlumnoService>();
             services.AddCors();
              
+=======
+            services.AddTransient<ResponsableService,ResponsableService>();
+            services.AddCors(options =>
+             {options.AddPolicy(name: MyAllowSpecificOrigins,builder =>
+                              {builder.WithOrigins("http://localhost:4200/");}); });
+>>>>>>> desarrollo
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

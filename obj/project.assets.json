@@ -8026,11 +8026,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
+      "projectUniqueName": "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
       "projectName": "PasantiasWebApi",
-      "projectPath": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
+      "projectPath": "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
       "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\obj\\",
+      "outputPath": "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -8089,5 +8089,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

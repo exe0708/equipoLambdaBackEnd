@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1cm/PFOfSUvBsw+ZFSAQvKOQ+J/BcRkLpKJB7dXUXqH6KfF9hAUXVBX6QBJqFyshYP2NSq6+SjK58MB8+9x6pw==",
+  "dgSpecHash": "sc77+Mmg0BNHDTHLsz4j5J1DoDVrhe8AjwtU3cKY8ly9hw0G/L9gkzr5fAIbSer3ZPdmQmPWXAROVKt5LUZURw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
+  "projectFilePath": "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USUARIO\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",
@@ -154,5 +154,12 @@
     "C:\\Users\\USUARIO\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.0.1\\system.xml.xpath.xmldocument.4.0.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
