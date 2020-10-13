@@ -64,6 +64,22 @@ namespace PasantiasWebApi.Controllers
                     throw;
                 }
         }
+        [HttpGet]
+        [Route("obtenerAlumno/{legajo}")]
+        public IActionResult obtenerAlumno(int legajo)
+        {
+            try
+            {
+                
+                var alumno= _alumnoService.obtenerAlumno(legajo);    
+                return Ok(alumno);
+                
+            }
+            catch (System.Exception)
+                {
+                    throw;
+                }
+        }
        
     }
 }
