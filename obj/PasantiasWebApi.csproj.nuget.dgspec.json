@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj": {}
+    "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj": {}
   },
   "projects": {
-    "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj": {
+    "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
+        "projectUniqueName": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
         "projectName": "PasantiasWebApi",
-        "projectPath": "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
+        "projectPath": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
         "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\obj\\",
+        "outputPath": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -47,10 +47,6 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.7, )"
-            },
-            "MimeKit": {
-              "target": "Package",
-              "version": "[2.9.2, )"
             },
             "MySql.Data.EntityFrameworkCore": {
               "target": "Package",

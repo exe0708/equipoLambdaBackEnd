@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "06NuqK7Xe2Bz38B/miQiTQFpx1A7BU7tMSLC3KS6sUQFvXyUAIKVw2VEFBDWqdEGcJ2W/oRtjIUZ7lLeEHTp5A==",
+  "dgSpecHash": "Yf/DHBEESSFCNOXg+Ny4npmfqAOvm8hDkCA4y0cswtgojaqOdcoM2zRPlb/qh0umC34VfK7eLyFHbXn0k6MUGw==",
   "success": true,
-  "projectFilePath": "c:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
+  "projectFilePath": "C:\\Users\\USUARIO\\Desktop\\Repos\\ProyectoPasantias\\PasantiasWebApi\\PasantiasWebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USUARIO\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",
