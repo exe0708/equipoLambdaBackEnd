@@ -18,7 +18,7 @@ namespace PasantiasWebApi.Controllers
         {
             _alumnoService =alumnoService;
         }
-/*
+
         [HttpPost]
         [Route("postularAlumno")]
         public IActionResult postularAlumno([FromBody] formularioarmxalumno alumnoxarm)
@@ -64,6 +64,6 @@ namespace PasantiasWebApi.Controllers
                     throw;
                 }
         }
-       */
+       
     }
 }
