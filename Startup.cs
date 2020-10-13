@@ -24,7 +24,7 @@ namespace PasantiasWebApi
         {
             services.AddControllers();
              services.AddDbContext <PasantiasDBContext> (opciones =>
-            opciones.UseMySQL(Configuration.GetConnectionString ("pasantiasProduccion")));
+            opciones.UseMySQL(Configuration.GetConnectionString ("pasantiasDesarrollo")));
             services.AddTransient<FormularioARMService,FormularioARMService>();
             services.AddTransient<ResponsableService,ResponsableService>();
             services.AddTransient<AlumnoService,AlumnoService>();

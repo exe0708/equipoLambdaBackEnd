@@ -15,7 +15,7 @@ namespace PasantiasWebApi.Services
         }
         public alumno obtenerAlumno(int legajo)
         {
-            var alumno = _pasantiasDbContext.alumno.Where(x=> x.legajo== legajo).SingleOrDefault();
+            var alumno = _pasantiasDbContext.alumno.Include(x=>x.especialidad).Where(x=> x.legajo== legajo).SingleOrDefault();
             return alumno;
         }
         public bool actualizarAlumno(alumno alumno)
@@ -24,6 +24,7 @@ namespace PasantiasWebApi.Services
             try 
             {
                 _pasantiasDbContext.alumno.Update(alumno);
+                _pasantiasDbContext.SaveChanges();
                 respuesta = true;
             }
             catch(System.Exception)

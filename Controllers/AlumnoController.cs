@@ -41,7 +41,7 @@ namespace PasantiasWebApi.Controllers
             }
         }        
         
-        [HttpPost]
+        [HttpPut]
         [Route("actualizarAlumno")]
         public IActionResult actualizarAlumno([FromBody] alumno alumno)
         {
