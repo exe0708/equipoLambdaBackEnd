@@ -1,8 +1,10 @@
+
+
 using System;
 using System.Collections.Generic;
-using PasantiasWebApi.Models;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using PasantiasWebApi.Models;
 
 namespace PasantiasWebApi.Services
 {
@@ -27,6 +29,11 @@ namespace PasantiasWebApi.Services
             .Where(x=>x.formularioarm.id_estado==1 && x.id_estado==1 && DateTime.Compare(DateTime.Now,x.formularioarm.fechaBaja)<1 ).ToList();
             return lista_solicitudes;
         
+        }
+        public responsable obtenerResponsable(int legajo)
+        {
+            var responsable =_pasantiasDbContext.responsable.Where(x=>x.legajo==legajo).Single();
+            return responsable;
         }
 
         public formularioarmxalumno AceptarSolicitud(int id_solicitud){

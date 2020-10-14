@@ -1,11 +1,8 @@
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using PasantiasWebApi.Services;
 using PasantiasWebApi.Models;
+using PasantiasWebApi.Services;
 
 namespace PasantiasWebApi.Controllers
 {
@@ -18,6 +15,21 @@ namespace PasantiasWebApi.Controllers
         {
             _responsableService=responsableService;
         }
+               [HttpGet]
+        [Route("MostrarSolicitudes/{legajo}")]
+        public ActionResult obtenerResponsable(int legajo)
+        {
+            try
+            {
+                var responsable=_responsableService.obtenerResponsable(legajo);
+                return Ok(responsable);
+            }
+            catch(Exception e)
+            {
+                return Ok(e.Message);
+            }
+        }
+
         [HttpGet]
         [Route("MostrarSolicitudes")]
         public ActionResult MostrarSolicitudes()
