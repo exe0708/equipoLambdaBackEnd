@@ -46,11 +46,11 @@ namespace PasantiasWebApi.Controllers
         }
 
         [HttpPut]
-        [Route("aceptarSolicitud/{id_solicitud}")]
-        public ActionResult AceptarSolicitud(int id_solicitud){
+        [Route("procesarSolicitud")]
+        public ActionResult ProcesarSolicitud([FromBody] formularioarmxalumno formularioarmxalumno){
             try
             {
-                var respuesta = _responsableService.AceptarSolicitud(id_solicitud);
+                var respuesta = _responsableService.procesarSolicitud(formularioarmxalumno);
                 return Ok(respuesta);
 
             }
@@ -61,20 +61,7 @@ namespace PasantiasWebApi.Controllers
         
         }
 
-        [HttpPut]
-        [Route("rechazarSolicitud/{id_solicitud}")]
-        public ActionResult RechazarSolicitud(int id_solicitud, formularioarmxalumno solicitud)
-        {
-            try
-            {
-               var respuesta = _responsableService.RechazarSolicitud(id_solicitud, solicitud);
-               return Ok(respuesta); 
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+     
 
 
 
