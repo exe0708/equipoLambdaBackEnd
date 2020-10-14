@@ -16,7 +16,7 @@ namespace PasantiasWebApi.Controllers
             _responsableService=responsableService;
         }
                [HttpGet]
-        [Route("MostrarSolicitudes/{legajo}")]
+        [Route("obtenerResponsable/{legajo}")]
         public ActionResult obtenerResponsable(int legajo)
         {
             try
@@ -31,7 +31,7 @@ namespace PasantiasWebApi.Controllers
         }
 
         [HttpGet]
-        [Route("MostrarSolicitudes")]
+        [Route("mostrarSolicitudes")]
         public ActionResult MostrarSolicitudes()
         {
             try
@@ -46,7 +46,7 @@ namespace PasantiasWebApi.Controllers
         }
 
         [HttpPut]
-        [Route("AceptarSolicitud/{id_solicitud}")]
+        [Route("aceptarSolicitud/{id_solicitud}")]
         public ActionResult AceptarSolicitud(int id_solicitud){
             try
             {
@@ -62,7 +62,7 @@ namespace PasantiasWebApi.Controllers
         }
 
         [HttpPut]
-        [Route("RechazarSolicitud/{id_solicitud}")]
+        [Route("rechazarSolicitud/{id_solicitud}")]
         public ActionResult RechazarSolicitud(int id_solicitud, formularioarmxalumno solicitud)
         {
             try
