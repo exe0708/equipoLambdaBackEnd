@@ -11,9 +11,11 @@ namespace PasantiasWebApi.Controllers
     public class ResponsableController : ControllerBase
     {
         private readonly ResponsableService _responsableService;
-        public ResponsableController(ResponsableService responsableService)
+         private readonly CorreoService _correoService;
+        public ResponsableController(ResponsableService responsableService,CorreoService correoService)
         {
             _responsableService=responsableService;
+             _correoService =correoService;
         }
                [HttpGet]
         [Route("obtenerResponsable/{legajo}")]
@@ -50,7 +52,15 @@ namespace PasantiasWebApi.Controllers
         public ActionResult ProcesarSolicitud([FromBody] formularioarmxalumno formularioarmxalumno){
             try
             {
-                var respuesta = _responsableService.procesarSolicitud(formularioarmxalumno);
+                formularioarmxalumno respuesta = _responsableService.procesarSolicitud(formularioarmxalumno);
+                if(respuesta.id_estado == 2)
+                {
+                    _correoService.aceptarPasantia(formularioarmxalumno);
+                }
+                else
+                {
+                    _correoService.denegarPasantia(formularioarmxalumno);
+                }
                 return Ok(respuesta);
 
             }

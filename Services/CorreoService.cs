@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
-
+using PasantiasWebApi.Models;
 
 namespace PasantiasWebApi.Services
 {
@@ -14,8 +14,29 @@ namespace PasantiasWebApi.Services
                 _pasantiasDbContext=pasantiasDBContext;
         }
         
+        public void postular(formularioarmxalumno alumnoxarm)
+        {
+            string asunto="Postulacion a Pasantia";
+            string cuerpo="Felicitaciones usted se inscribio a la pasantia nnnn con exito";
+            string mail=alumnoxarm.alumno.mail;
+            enviarMail(asunto,cuerpo,mail);
+        }
+         public void aceptarPasantia(formularioarmxalumno alumnoxarm)
+        {
+            string asunto="Pasantia Aceptada";
+            string cuerpo="Felicitaciones usted se fue pre-seleccionado a la pasantia nnnn con exito";
+            string mail=alumnoxarm.alumno.mail;
+            enviarMail(asunto,cuerpo,mail);
+        }
+         public void denegarPasantia(formularioarmxalumno alumnoxarm)
+        {
+            string asunto="Rechazo Postulacion";
+            string cuerpo="Lamentamos informarle que la empresa rechazo su solicitud a la pasantia nnnn ";
+            string mail=alumnoxarm.alumno.mail;
+            enviarMail(asunto,cuerpo,mail);
+        }
 
-        public bool enviarMail(string asunto,  string cuerpo,string mail)
+        public void enviarMail(string asunto,  string cuerpo,string mail)
         {
             try
             {
@@ -24,6 +45,7 @@ namespace PasantiasWebApi.Services
                 var Replymessage = new MimeMessage();
                 message.From.Add(new MailboxAddress("Secretaria de Extensión Universitaria-Area Pasantías", "noreply-pasantias@frc.utn.edu.ar"));
                 message.To.Add(new MailboxAddress("No-reply", mail));
+                
             
 
                 message.Subject = asunto;
@@ -40,15 +62,15 @@ namespace PasantiasWebApi.Services
                     client.ServerCertificateValidationCallback = (s, c, h, e) => true;
                     client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
                     client.AuthenticationMechanisms.Remove("XOAUTH2");
-                    client.Authenticate("noreply-pasantias@frc.utn.edu.ar", "3.A%qoW7+296T");
+                    client.Authenticate("pasantiautn01", "pasantiasutn");
                     client.Send(message);
                     client.Disconnect(true);
-                    return true;
+                   
                 }
             }
             catch (System.Exception)
             {
-                return false;
+                throw;
             }
         }
         

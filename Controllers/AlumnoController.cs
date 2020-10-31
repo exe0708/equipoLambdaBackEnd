@@ -14,9 +14,11 @@ namespace PasantiasWebApi.Controllers
      public class AlumnoController : ControllerBase
     {
         private readonly AlumnoService _alumnoService;
-        public AlumnoController(AlumnoService alumnoService)
+        private readonly CorreoService _correoService;
+        public AlumnoController(AlumnoService alumnoService,CorreoService correoService)
         {
             _alumnoService =alumnoService;
+             _correoService =correoService;
         }
 
         [HttpPost]
@@ -80,6 +82,21 @@ namespace PasantiasWebApi.Controllers
                     throw;
                 }
         }
-       
+        [HttpGet]
+        [Route("validarAlumno/{legajo}/{id_formulario}")]
+        public IActionResult validarAlumno(int legajo, int id_formulario)
+        {
+            try
+            {
+                
+                var alumno= _alumnoService.validarAlumno(legajo,id_formulario);    
+                return Ok(alumno);
+                
+            }
+            catch (System.Exception)
+                {
+                    throw;
+                }
+        }
     }
 }
