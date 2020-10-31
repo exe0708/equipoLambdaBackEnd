@@ -38,7 +38,7 @@ namespace PasantiasWebApi.Services
             return responsable;
         }
 
-        public bool procesarSolicitud(formularioarmxalumno formularioarmxalumno){
+        public formularioarmxalumno procesarSolicitud(formularioarmxalumno formularioarmxalumno){
     
            try 
            {
@@ -46,7 +46,7 @@ namespace PasantiasWebApi.Services
             _pasantiasDbContext.Entry(formularioarmxalumno).State = EntityState.Modified;
             _pasantiasDbContext.Update(formularioarmxalumno);
             _pasantiasDbContext.SaveChanges();
-            return true;
+            return formularioarmxalumno;
             }
             catch(Exception)
             {

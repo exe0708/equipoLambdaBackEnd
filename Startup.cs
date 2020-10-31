@@ -28,6 +28,7 @@ namespace PasantiasWebApi
             services.AddTransient<FormularioARMService,FormularioARMService>();
             services.AddTransient<ResponsableService,ResponsableService>();
             services.AddTransient<AlumnoService,AlumnoService>();
+            services.AddTransient<CorreoService,CorreoService>();
             services.AddCors();
         }
 
