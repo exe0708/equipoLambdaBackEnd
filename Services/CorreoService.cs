@@ -13,7 +13,7 @@ namespace PasantiasWebApi.Services
         {
                 _pasantiasDbContext=pasantiasDBContext;
         }
-        
+       
         public void postular(formularioarmxalumno alumnoxarm)
         {
             string asunto="Postulacion a Pasantia";
@@ -59,10 +59,9 @@ namespace PasantiasWebApi.Services
                 
                 using (var client = new SmtpClient())
                 {
-                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                    client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+                    client.Connect("smtp.gmail.com", 587);
                     client.AuthenticationMechanisms.Remove("XOAUTH2");
-                    client.Authenticate("pasantiautn01", "pasantiasutn");
+                    client.Authenticate("pasantiasutn007", "pasantias0708");
                     client.Send(message);
                     client.Disconnect(true);
                    

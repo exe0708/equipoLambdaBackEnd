@@ -38,6 +38,7 @@ namespace PasantiasWebApi.Controllers
         {
             try
             {
+                
                 var lista_solicitudes=_responsableService.MostrarSolicitudes();
                 return Ok(lista_solicitudes);
             }
