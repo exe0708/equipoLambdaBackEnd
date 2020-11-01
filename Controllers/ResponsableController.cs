@@ -56,6 +56,7 @@ namespace PasantiasWebApi.Controllers
                 formularioarmxalumno respuesta = _responsableService.procesarSolicitud(formularioarmxalumno);
                 if(respuesta.id_estado == 2)
                 {
+                
                     _correoService.aceptarPasantia(formularioarmxalumno);
                 }
                 else

@@ -3,6 +3,7 @@ using MimeKit;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using PasantiasWebApi.Models;
+using System.Linq;
 
 namespace PasantiasWebApi.Services
 {
@@ -18,7 +19,9 @@ namespace PasantiasWebApi.Services
         {
             string asunto="Postulacion a Pasantia";
             string cuerpo="Felicitaciones usted se inscribio a la pasantia nnnn con exito";
-            string mail=alumnoxarm.alumno.mail;
+            alumno a =new alumno();
+            a=_pasantiasDbContext.alumno.Where(x=>x.legajo==alumnoxarm.legajo_alumno).Single();
+            string mail=a.mail;
             enviarMail(asunto,cuerpo,mail);
         }
          public void aceptarPasantia(formularioarmxalumno alumnoxarm)
