@@ -28,14 +28,18 @@ namespace PasantiasWebApi.Services
         {
             string asunto="Pasantia Aceptada";
             string cuerpo="Felicitaciones usted se fue pre-seleccionado a la pasantia nnnn con exito";
-            string mail=alumnoxarm.alumno.mail;
+            alumno a =new alumno();
+            a=_pasantiasDbContext.alumno.Where(x=>x.legajo==alumnoxarm.legajo_alumno).Single();
+            string mail=a.mail;
             enviarMail(asunto,cuerpo,mail);
         }
          public void denegarPasantia(formularioarmxalumno alumnoxarm)
         {
             string asunto="Rechazo Postulacion";
             string cuerpo="Lamentamos informarle que la empresa rechazo su solicitud a la pasantia nnnn ";
-            string mail=alumnoxarm.alumno.mail;
+            alumno a =new alumno();
+            a=_pasantiasDbContext.alumno.Where(x=>x.legajo==alumnoxarm.legajo_alumno).Single();
+            string mail=a.mail;
             enviarMail(asunto,cuerpo,mail);
         }
 
